@@ -6,16 +6,16 @@ a[href="https://www.buymeacoffee.com/viktorbezdek"]{
     transform: translate(0, 5%);
 }
 
-.ES-suggester-container {
+.phrasebank-suggester-container {
     display: flex;
     place-content: space-between;
 }
 
-.ES-shortcode {
+.phrasebank-shortcode {
     margin-right: 8px;
 }
 
-.ES-suggestion-item {
+.phrasebank-suggestion-item {
     border-top: solid var(--background-secondary) 1px;
     padding-left: 10px;
 }

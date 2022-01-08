@@ -2,7 +2,8 @@ import {
 	Editor,
 	EditorPosition, EditorSuggest, EditorSuggestContext, EditorSuggestTriggerInfo, Plugin, TFile
 } from "obsidian"
-import { phrases } from "./phraseList"
+import { Key } from "readline"
+import { phrases, Phrases } from './phraseList';
 import PhraseMarkdownPostProcessor from "./PhrasePostProcessor"
 import {
 	DEFAULT_SETTINGS,
@@ -61,28 +62,33 @@ class PhraseSuggester extends EditorSuggest<string> {
   }
 
   getSuggestions(context: EditorSuggestContext): string[] {
-    let Phrase_query = context.query.replace(":", "")
-    return Object.keys(phrases).filter(p => p.includes(Phrase_query))
+    let query = context.query.replace(":", "")
+    return Object.keys(phrases).filter(p => p.includes(query))
   }
 
   renderSuggestion(suggestion: string, el: HTMLElement): void {
-    const outer = el.createDiv({ cls: "ES-suggester-container" })
+    const outer = el.createDiv({ cls: "phrasebank-suggester-container" })
     outer
-      .createDiv({ cls: "ES-shortcode" })
+      .createDiv({ cls: "phrasebank-shortcode" })
       .setText(suggestion.replace(/:/g, ""))
-    //@ts-expect-error
-    outer.createDiv({ cls: "ES-Phrase" }).setText(phrases[suggestion])
+    outer.createDiv({ cls: "phrasebank-item" }).setText(phrases[suggestion])
   }
 
-  selectSuggestion(suggestion: string): void {
+  selectSuggestion(suggestion: keyof Phrases): void {
     if (this.context) {
-      ;(this.context.editor as Editor).replaceRange(
+      const editor:Editor = (this.context.editor as Editor)
+      const phrase = phrases[suggestion];
+      editor.replaceRange(
         this.plugin.settings.immediateReplace
-          ? phrases[suggestion]
+          ? phrase
           : `${suggestion} `,
         this.context.start,
         this.context.end
       )
+
+      // editor.setCursor(this.context.end, -(suggestion.toString().length + phrase.length))
+      // console.log('test')
     }
+
   }
 }
