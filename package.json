@@ -1,7 +1,7 @@
 {
   "name": "obsidian-phrasebank",
   "description": "This Plugin adds shortcodes with various prewritten phrases to improve quality and productivity of your writing.",
-  "version": "0.0.1",
+  "version": "0.0.1-1",
   "author": "Viktor Bezdek <viktor.bezdek@gmail.com>",
   "bugs": {
     "url": "https://github.com/viktorbezdek/obsidian-phrasebank/issues"
