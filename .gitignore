@@ -5,7 +5,7 @@
 # npm
 node_modules
 package-lock.json
-yarn.lock
+# yarn.lock
 
 # build
 main.js
@@ -13,5 +13,5 @@ main.js
 
 # obsidian
 data.json
-
 phrases.txt
+*.log
