@@ -25,13 +25,13 @@
     "plugin"
   ],
   "license": "MIT",
-  "main": "./dist/main.js",
+  "main": ".main.js",
   "repository": {
     "url": "https://github.com/viktorbezdek/obsidian-phrasebank.git",
     "type": "git"
   },
   "scripts": {
     "build": "rollup --config rollup.config.js --environment BUILD:production",
-    "dev": "esbuild src/main.ts --bundle --external:obsidian --format=cjs --outfile=./dist/main.js --minify --watch"
+    "dev": "esbuild src/main.ts --bundle --external:obsidian --format=cjs --outfile=main.js --sourcemap --watch"
   }
 }
