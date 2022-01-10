@@ -10,7 +10,7 @@ export default class PhrasePostProcessor {
       )
   }
 
-  static replace(shortcode: keyof typeof phrases, el: HTMLElement) {
+  static replace(shortcode: any, el: HTMLElement) {
     if (
       typeof el.tagName === "string" &&
       (el.tagName.indexOf("CODE") !== -1 || el.tagName.indexOf("MJX") !== -1)

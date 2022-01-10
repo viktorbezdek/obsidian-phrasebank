@@ -1,14 +1,14 @@
 import {
-	Editor,
-	EditorPosition, EditorSuggest, EditorSuggestContext, EditorSuggestTriggerInfo, Plugin, TFile
+  Editor,
+  EditorPosition, EditorSuggest, EditorSuggestContext, EditorSuggestTriggerInfo, Plugin, TFile
 } from "obsidian"
 import { Key } from "readline"
 import { phrases, Phrases } from './phraseList';
 import PhraseMarkdownPostProcessor from "./PhrasePostProcessor"
 import {
-	DEFAULT_SETTINGS,
-	PhrasePluginSettings,
-	PhrasePluginSettingTab
+  DEFAULT_SETTINGS,
+  PhrasePluginSettings,
+  PhrasePluginSettingTab
 } from "./settings"
 
 export default class PhraseShortcodesPlugin extends Plugin {
@@ -76,7 +76,7 @@ class PhraseSuggester extends EditorSuggest<string> {
 
   selectSuggestion(suggestion: keyof Phrases): void {
     if (this.context) {
-      const editor:Editor = (this.context.editor as Editor)
+      const editor: Editor = (this.context.editor as Editor)
       const phrase = phrases[suggestion];
       editor.replaceRange(
         this.plugin.settings.immediateReplace
@@ -86,8 +86,13 @@ class PhraseSuggester extends EditorSuggest<string> {
         this.context.end
       )
 
-      // editor.setCursor(this.context.end, -(suggestion.toString().length + phrase.length))
-      // console.log('test')
+      console.log(this.context.start, phrase.indexOf('$1'))
+      const { ch, line } = this.context.start
+
+      editor.setCursor({ line, ch: ch + phrase.indexOf('$1') })
+      editor.setSelection(
+        { line, ch: ch + phrase.indexOf('$1') }, { line, ch: ch + phrase.indexOf('$1') + 2 }
+      )
     }
 
   }
