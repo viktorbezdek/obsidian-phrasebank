@@ -1,21 +1,21 @@
 {
   "name": "obsidian-phrasebank",
   "description": "This Plugin adds shortcodes with various prewritten phrases to improve quality and productivity of your writing.",
-  "version": "0.0.1-1",
+  "version": "0.0.1",
   "author": "Viktor Bezdek <viktor.bezdek@gmail.com>",
   "bugs": {
     "url": "https://github.com/viktorbezdek/obsidian-phrasebank/issues"
   },
   "dependencies": {},
   "devDependencies": {
-		"@types/node": "^16.11.6",
-		"@typescript-eslint/eslint-plugin": "^5.2.0",
-		"@typescript-eslint/parser": "^5.2.0",
-		"builtin-modules": "^3.2.0",
-		"esbuild": "0.13.12",
-		"obsidian": "^0.12.17",
-		"tslib": "2.3.1",
-		"typescript": "4.4.4"
+    "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "builtin-modules": "^3.2.0",
+    "esbuild": "0.13.12",
+    "obsidian": "^0.12.17",
+    "tslib": "2.3.1",
+    "typescript": "4.4.4"
   },
   "homepage": "https://github.com/viktorbezdek/obsidian-phrasebank",
   "keywords": [
@@ -30,7 +30,7 @@
     "type": "git"
   },
   "scripts": {
-		"dev": "node esbuild.config.mjs",
-		"build": "node esbuild.config.mjs production"
+    "dev": "node esbuild.config.mjs",
+    "build": "node esbuild.config.mjs production"
   }
 }
